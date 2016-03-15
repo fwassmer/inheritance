@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:jpa="http://aries.apache.org/xmlns/jpa/v2.0.0"
+		   xmlns:tx="http://aries.apache.org/xmlns/transactions/v2.0.0">
+
+    <jpa:enable />
+    <tx:enable />
+
+	<service ref="reportPersistenceManager" interface="org.broken.persistence.api.ReportPersistenceManager" />
+
+	<bean id="reportPersistenceManager" class="org.broken.persistence.ReportPersistenceManagerImpl">
+		<property name="dao" ref="reportDao" />
+	</bean>
+
+	<bean id="reportDao" class="org.broken.persistence.dao.ReportDao" />
+
+</blueprint>

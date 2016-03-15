@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>inheritance</artifactId>
+        <groupId>org.broken</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>persistence</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>bundle</packaging>
+
+    <name>${project.groupId} - ${project.artifactId}</name>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<configuration>
+					<instructions>
+						<Meta-Persistence>META-INF/persistence.xml</Meta-Persistence>
+						<Import-Package>
+							javassist.util.proxy,
+							org.hibernate.proxy,
+							*
+						</Import-Package>
+                        <Export-Package >
+                            org.broken.persistence.api,
+                            org.broken.persistence.model
+                        </Export-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+        <dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+		</dependency>
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+        </dependency>
+	</dependencies>
+</project>
