@@ -4,7 +4,8 @@
 
     <feature name="hibernate-custom" version="${hibernate.version}" description="Hibernate ${hibernate.version} JPA persistence engine support">
         <details>Enable Hibernate ${hibernate.version} as persistence engine.</details>
-        <feature version="${feature-transaction.version}" dependency="true">transaction</feature>
+        <bundle dependency="true">mvn:org.eclipse.persistence/javax.persistence/2.1.0</bundle>
+        <feature version="${feature-transaction.version}">transaction</feature>
         <feature version="${feature-jpa.version}" prerequisite="false" dependency="false">jpa</feature>
         <feature prerequisite="false" dependency="true">http</feature>
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.antlr/${servicemix.antlr.version}</bundle>
@@ -24,7 +25,7 @@
 
     <feature name="buggy">
         <feature>pax-jdbc-pool-dbcp2</feature>
-        <feature>pax-jdbc-mariadb</feature>-->
+        <feature>pax-jdbc-h2</feature>
         <bundle>mvn:com.h2database/h2/1.4.191</bundle>
         <bundle>blueprint:mvn:org.broken/features/1.0-SNAPSHOT/xml/datasource</bundle>
         <feature>jdbc</feature>
